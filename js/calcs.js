@@ -33,3 +33,8 @@ $(document).ready(function(){
     // need to clear the interval once it gets to the day rate
   }, 1000);
 });
+
+// TO DO
+// Make the SVG background image responsive
+// Make the text stand out more
+// Style the form on the first page
