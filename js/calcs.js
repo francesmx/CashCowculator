@@ -6,17 +6,12 @@ $(document).ready(function(){
     }
     $_GET[decode(arguments[1])] = decode(arguments[2]);
   });
-
-  var dayRate = parseFloat($_GET["ratePerDay"]);
-  console.log(dayRate);
-
+  var dayRate = parseFloat($_GET["dayRate"]);
   var numberHoursInAWorkingDayIncludingLunch = 8;
   var payPerSecond = dayRate / (numberHoursInAWorkingDayIncludingLunch * 60 * 60);
   var timeStartedWorkInMorning = moment('09:00', "HH:mm:ss");
-  var timeRightNow = moment();
-  var amountEarnedSoFarToday = calculateAmountEarned();
 
-  function calculateAmountEarned(startTime = timeStartedWorkInMorning, stopTime = timeRightNow) {
+  function calculateAmountEarned(startTime = timeStartedWorkInMorning, stopTime = moment()) {
     let numberSecondsWorked = stopTime.diff(startTime, 'seconds');
     return (numberSecondsWorked * payPerSecond).toFixed(2);
     // let amount = (numberSecondsWorked * payPerSecond).toFixed(2);
@@ -29,7 +24,12 @@ $(document).ready(function(){
   }
 
   function displayAmountEarned() {
+    var amountEarnedSoFarToday = calculateAmountEarned();
     $('#amountEarned').text(amountEarnedSoFarToday.toString());
   }
-  displayAmountEarned();
+
+  var x = setInterval(function() {
+    displayAmountEarned();
+    // need to clear the interval once it gets to the day rate
+  }, 1000);
 });
