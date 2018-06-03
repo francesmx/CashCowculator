@@ -13,14 +13,14 @@ $(document).ready(function(){
 
   function calculateAmountEarned(startTime = timeStartedWorkInMorning, stopTime = moment()) {
     let numberSecondsWorked = stopTime.diff(startTime, 'seconds');
-    return (numberSecondsWorked * payPerSecond).toFixed(2);
-    // let amount = (numberSecondsWorked * payPerSecond).toFixed(2);
-    // if (amount < dayRate) {
-    //   return amount;
-    // }
-    // else {
-    //   return dayRate;
-    // }
+    // return (numberSecondsWorked * payPerSecond).toFixed(2);
+    let amount = (numberSecondsWorked * payPerSecond).toFixed(2);
+    if (amount < dayRate) {
+      return amount;
+    }
+    else {
+      return dayRate.toFixed(2);
+    }
   }
 
   function displayAmountEarned() {
