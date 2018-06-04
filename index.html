@@ -6,12 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body class="pure-img">
-    <div>
+    <div class="container">
+      <h1>Cash Cowculator</h1>
       <form action="result.html" method="get">
-        <label for "dayRate">What's your day rate?
-        <input type="text" id="dayRate" name="dayRate"/>
-        </label>
-        <input type="submit" id="submitBtn" />
+        <div class="row">
+            <label for="amountMade">How much do you earn?</label>
+            <div>
+              <input type="text" id="amountMade" name="amountMade"/>
+              <select name="frequency">
+                <option value="hour">per hour</option>
+                <option value="day" selected>per day</option>
+                <option value="week">per week</option>
+                <option value="month">per month</option>
+                <option value="year">per year</option>
+              </select>
+            </div>
+        </div>
+        <div class="row">
+          <input type="submit" value="Submit">
+        </div>
       </form>
     </div>
   </body>
